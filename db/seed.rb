@@ -29,7 +29,7 @@ def create_tables
 )')
     db.execute('CREATE TABLE songs (
 	id INTEGER,
-	song_title	INTEGER NOT NULL,
+	song_title	TEXT NOT NULL,
 	album_id	INTEGER,
 	PRIMARY KEY("id" AUTOINCREMENT)
 )')
@@ -64,7 +64,7 @@ def seed_tables
     end
 
     artists = [
-        {id: '1', name: 'Sonder', album_id: ''},
+        {id: '1', name: 'Sonder'},
         {id: '2', name: 'Ley Soul'},
         {id: '3', name: 'KAMAKUU'}   
     ]

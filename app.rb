@@ -12,9 +12,14 @@ class App < Sinatra::Base
         erb :index
     end
 
-    get '/fruits' do
-        @fruits = db.execute('SELECT * FROM fruits')
-        erb :fruits
+    get '/artists' do
+        @artists = db.execute('SELECT * FROM artists')
+        erb :artists
+    end
+
+    get '/artists/:id' do |artist_id|
+        @artists_selected = db.execute('SELECT * FROM artists WHERE id = ?', artist_id.to_i).first
+        erb :show_artists
     end
 
     get '/fruits/new' do 
