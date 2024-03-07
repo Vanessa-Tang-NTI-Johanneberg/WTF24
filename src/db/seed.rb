@@ -25,6 +25,7 @@ def create_tables
     db.execute('CREATE TABLE artists (
     id INTEGER,
     name TEXT NOT NULL, 
+    about TEXT NOT NULL
     PRIMARY KEY("id" AUTOINCREMENT)
 )')
     db.execute('CREATE TABLE songs (

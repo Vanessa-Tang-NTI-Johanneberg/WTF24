@@ -17,21 +17,22 @@ class App < Sinatra::Base
         erb :artists
     end
 
+    
+    get '/artists/new' do 
+        erb :'new'
+    end
+    
     get '/artists/:id' do |artist_id|
         @artists_selected = db.execute('SELECT * FROM artists WHERE id = ?', artist_id.to_i).first
-        erb :show_artists
+        erb :'show_artists'
     end
 
-    get '/fruits/new' do 
-      erb :'new'
-    end
-
-    post '/fruits/' do 
+    post '/artists/' do 
       name = params['name']
-      desc = params['description']
-      query = 'INSERT INTO fruits (name, description) VALUES (?,?) RETURNING *'
+      desc = params['about']
+      query = 'INSERT INTO artist (name, about) VALUES (?,?) RETURNING *'
       result = db.execute(query, name, desc).first 
-      redirect "/fruits/#{result['id']}" 
+      redirect "/artists/#{result['id']}" 
     end
 
     get '/fruits/:id/edit' do |id| 

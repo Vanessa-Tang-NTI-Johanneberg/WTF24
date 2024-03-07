@@ -1,0 +1,20 @@
+
+header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(193, 210, 245);
+    box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(9, 24, 37);
+    /* background-image: url(../img/not.png) */
+    
+}
+
+
+.logo{
+    height: 85px;
+    width: 85px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
