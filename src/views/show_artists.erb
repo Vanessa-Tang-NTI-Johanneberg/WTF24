@@ -1,4 +1,7 @@
-<h2> <%= @artists_selected['name'] %> <h2>
-<p><%= @artists_selected['about'] %></p>
-
-<p><a href="/artists">Show me all artists!</a></p>
+<% if @artists_selected %>
+  <h2> <%= @artists_selected['name'] %> </h2>
+  <p><%= @artists_selected['about'] %></p>
+  <p><a href="/artists">Show me all artists!</a></p>
+<% else %>
+  <p>Artist not found.</p>
+<% end %>
