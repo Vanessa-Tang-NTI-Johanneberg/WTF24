@@ -12,9 +12,45 @@ header{
 
 
 .logo{
-    height: 85px;
-    width: 85px;
+    height: 45px;
+    width: 45px;
     border-radius: 5px;
     margin-left: 20px;
+}
+
+.menu{
+    display: grid;
+    height: 100vh;
+    padding: none;
+    grid-template-rows: 100%, 20%;
+    grid-template-columns: 5%, 5%, 5% ;
+    grid-template-areas:
+        'hd na lg'
+        'hd na lg'
+    
+}
+
+#hd {
+    grid-area: 'hd';
+    background-color: rgb(42, 32, 42);
+    color: rgb(243, 199, 199);
+    height: 75px;
+    text-align: center;
+    font-size: 15px;
+
+}
+
+#na {
+    grid-area: 'na';
+    background-color: rgb(201, 174, 201);
+    height: 75px;
+    text-align: center;
+}
+
+#lg {
+    grid-area: 'lg';
+    background-color: rgb(42, 32, 42);
+    height: 75px;
+    text-align: center;
 }
 

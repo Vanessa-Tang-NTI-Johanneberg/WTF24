@@ -9,7 +9,7 @@ def db
 end
 
 def drop_tables
-    db.execute('DROP TABLE IF EXISTS fruits')
+    db.execute('DROP TABLE IF EXISTS artists')
 end
 
 def create_tables
@@ -39,14 +39,21 @@ def create_tables
         id INTEGER,
         song_title INTEGER NOT NULL,
         album_id INTEGER,
+        stars INTERGER,
         PRIMARY KEY("id" AUTOINCREMENT)
-    )')
+)')
     db.execute('CREATE TABLE user (
         id INTEGER,
         password TEXT NOT NULL,
         username INTEGER UNIQUE,
         PRIMARY KEY("id" AUTOINCREMENT)
-    )')
+)')
+
+#     db.execute('CREATE TABLE artist (
+#     id INTEGER PRIMARY PRIMARY KEY("id" AUTOINCREMENT),
+#     name TEXT NOT NULL,
+#     about TEXT 
+# )')
 end
 
 
@@ -65,19 +72,19 @@ def seed_tables
     end
 
     artists = [
-        {id: '1', name: 'Sonder'},
-        {id: '2', name: 'Ley Soul'},
-        {id: '3', name: 'KAMAKUU'}   
+        {id: '1', name: 'Sonder', about:},
+        {id: '2', name: 'Ley Soul', about: },
+        {id: '3', name: 'KAMAKUU', about:}   
     ]
 
     artists.each do |artist|
-        db.execute('INSERT INTO artists (id, name) VALUES (?,?)', artists[:id], artists[:name])
+        db.execute('INSERT INTO artists (id, name, about) VALUES (?,?,?)', artists[:id], artists[:name], artists[:about])
     end
 
     songs = [
-        {id: '1', song_title: '1', album_id: '1'},
-        {id: '2', song_title: '2', album_id: '2'},
-        {id: '3', song_titled: '3', album_id: '3'}   
+        {id: '1', song_title: '1', album_id: '1', stars: '5'},
+        {id: '2', song_title: '2', album_id: '2', stars: '5'},
+        {id: '3', song_title: '3', album_id: '3', stars: '5'}   
     ]
 
     songs.each do |song|
@@ -91,6 +98,16 @@ def seed_tables
     users.each do |user|
         db.execute('INSERT INTO users (id, password, username) VALUES (?,?,?)', songs[:id], songs[:song_title], songs[:album_id])
     end
+
+    # artist = [
+    #     {id: '1', name: 'Sonder'},
+    #     {id: '2', name: 'Ley Soul'},
+    #     {id: '3', name: 'KAMAKUU'}   
+    # ]
+
+    # artists.each do |artist|
+    #     db.execute('INSERT INTO artists (id, name) VALUES (?,?)', artists[:id], artists[:name])
+    # end
     
 end
 

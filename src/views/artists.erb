@@ -1,8 +1,12 @@
 <% @artists.each do |artist| %>
-    <li>
+    <ul>
         <a href="/artists/<%= artist['id'] %>"><%= artist['name'] %> </a>
-    </li>
+    </ul>
 <% end %>
+
+<button type='submit'>
+<p><a href="/artists/new">Add another artist</a></p> </button> </form>
+
 
 
 

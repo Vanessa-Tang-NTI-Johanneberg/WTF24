@@ -1,5 +1,42 @@
 <form action='/artists/' method='post'> 
+  
+<div>
+  Name
   <input type='text' name='name'>
+</div>  
+
+<style>
+  /* Add some margin between div elements */
+  div {
+    margin-bottom: 80px; /* Adjust this value to increase or decrease the space */
+    margin-top: 80px;¨
+  
+  }
+
+
+ button {
+      background-color: pink;
+      border: 2px solid darkred;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px; /* Adjust this value to change the shape */
+      cursor: pointer;
+    } 
+
+</style>
+Write a little about the artist!
+
+<div>
   <textarea name="about"></textarea>
-  <button type='submit'>Send</button>
-</form>
+</div>  
+
+<div>
+  Rate this artist
+  <input type="checkbox" name="1[]" checked/>
+  <input type="checkbox" name="2 []" />
+  <input type="checkbox" name="3 []" />
+  <input type="checkbox" name="4 []" />
+  <input type="checkbox" name="5 []" />
+  <button type='submit'>Add</button> </form>
+</div>  
+

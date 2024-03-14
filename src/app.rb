@@ -17,14 +17,8 @@ class App < Sinatra::Base
         erb :artists
     end
 
-    
     get '/artists/new' do 
         erb :'new'
-    end
-    
-    get '/artists/:id' do |artist_id|
-        @artists_selected = db.execute('SELECT * FROM artists WHERE id = ?', artist_id.to_i).first
-        erb :'show_artists'
     end
 
     post '/artists/' do 
@@ -35,25 +29,25 @@ class App < Sinatra::Base
       redirect "/artists/#{result['id']}" 
     end
 
-    get '/fruits/:id/edit' do |id| 
-        @fruits = db.execute('SELECT * FROM fruits WHERE id = ?', id.to_i).first
+    get '/artists/:id/edit' do |id| 
+        @artists = db.execute('SELECT * FROM artists WHERE id = ?', id.to_i).first
         erb :'edit'
     end 
 
-    post '/fruits/:id/update' do |id| 
-        fruit = params['content']
-        db.execute('UPDATE fruits SET (content = ?) WHERE id = ?', fruit, id)
-        redirect "/fruits/#{id}" 
+    post '/artists/:id/update' do |id| 
+        artist = params['content']
+        db.execute('UPDATE artists SET (content = ?) WHERE id = ?', artist, id)
+        redirect "/artists/#{id}" 
     end
 
-    post '/fruits/:id/delete' do |id| 
-        db.execute('DELETE FROM fruits WHERE id = ?', id)
-            redirect "/fruits/"
-      end
+    post '/artists/:id/delete' do |id| 
+        db.execute('DELETE FROM artists WHERE id = ?', id)
+            redirect "/artists/"
+    end
 
-    get '/fruits/:id' do |fruit_id|
-        @fruits_selected = db.execute('SELECT * FROM fruits WHERE id = ?', fruit_id.to_i).first
-        erb :show
+    get '/artists/:id' do |artist_id|
+        @artists_selected = db.execute('SELECT * FROM artists WHERE id = ?', artist_id.to_i).first
+        erb :'show_artists'
     end
 
     
