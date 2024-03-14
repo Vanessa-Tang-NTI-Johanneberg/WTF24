@@ -1,11 +1,15 @@
 <% @artists.each do |artist| %>
     <ul>
         <a href="/artists/<%= artist['id'] %>"><%= artist['name'] %> </a>
+       <!-- <form action='/artist/remove/<%= artist["id"] %>' method='post'> 
+        <button type="submit">DELETE</button>
+       </form> -->
     </ul>
 <% end %>
 
 <button type='submit'>
 <p><a href="/artists/new">Add another artist</a></p> </button> </form>
+
 
 
 

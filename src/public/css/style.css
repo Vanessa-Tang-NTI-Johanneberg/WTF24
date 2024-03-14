@@ -22,17 +22,18 @@ header{
     display: grid;
     height: 100vh;
     padding: none;
-    grid-template-rows: 100%, 20%;
-    grid-template-columns: 5%, 5%, 5% ;
+    width: 100%;
+    margin: none;
+    grid-template-rows: 100% ;
+    grid-template-columns: 80px, 10px, 10px ;
     grid-template-areas:
-        'hd na lg'
         'hd na lg'
     
 }
 
 #hd {
     grid-area: 'hd';
-    background-color: rgb(42, 32, 42);
+    background-color: rgb(167, 91, 167);
     color: rgb(243, 199, 199);
     height: 75px;
     text-align: center;

@@ -21,12 +21,12 @@ class App < Sinatra::Base
         erb :'new'
     end
 
-    post '/artists/' do 
+    post '/artist/add' do 
       name = params['name']
       desc = params['about']
-      query = 'INSERT INTO artist (name, about) VALUES (?,?) RETURNING *'
+      query = 'INSERT INTO artists (name, about) VALUES (?,?) RETURNING *'
       result = db.execute(query, name, desc).first 
-      redirect "/artists/#{result['id']}" 
+      redirect "/artists" 
     end
 
     get '/artists/:id/edit' do |id| 
