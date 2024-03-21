@@ -25,7 +25,8 @@ def create_tables
     db.execute('CREATE TABLE artists (
     id INTEGER,
     name TEXT NOT NULL, 
-    about TEXT NOT NULL
+    about TEXT NOT NULL,
+    ratings INTEGER
     PRIMARY KEY("id" AUTOINCREMENT)
 )')
     db.execute('CREATE TABLE songs (
@@ -72,9 +73,9 @@ def seed_tables
     end
 
     artists = [
-        {id: '1', name: 'Sonder', about:},
-        {id: '2', name: 'Ley Soul', about: },
-        {id: '3', name: 'KAMAKUU', about:}   
+        {id: '1', name: 'Sonder', about:, rating: '5'},
+        {id: '2', name: 'Ley Soul', about:, rating: '5'},
+        {id: '3', name: 'KAMAKUU', about:, rating: '5'}   
     ]
 
     artists.each do |artist|

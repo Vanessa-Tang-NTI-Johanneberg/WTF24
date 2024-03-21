@@ -1,5 +1,12 @@
 class App < Sinatra::Base
 
+    helpers do
+
+        def h(text)
+            Rack::Utils.escape_html(text)
+        end
+    end
+
     def db
         if @db == nil
             @db = SQLite3::Database.new('./db/db.sqlite')
@@ -22,6 +29,7 @@ class App < Sinatra::Base
     end
 
     post '/artist/add' do 
+      p params
       name = params['name']
       desc = params['about']
       query = 'INSERT INTO artists (name, about) VALUES (?,?) RETURNING *'

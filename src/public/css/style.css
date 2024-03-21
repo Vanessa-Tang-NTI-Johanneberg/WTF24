@@ -25,7 +25,7 @@ header{
     width: 100%;
     margin: none;
     grid-template-rows: 100% ;
-    grid-template-columns: 80px, 10px, 10px ;
+    grid-template-columns: 3fr, 1fr, 1fr ;
     grid-template-areas:
         'hd na lg'
     
@@ -33,7 +33,7 @@ header{
 
 #hd {
     grid-area: 'hd';
-    background-color: rgb(167, 91, 167);
+    background-color: rgb(136, 184, 215);
     color: rgb(243, 199, 199);
     height: 75px;
     text-align: center;
@@ -41,17 +41,25 @@ header{
 
 }
 
+#hd a {
+    font-size: 1fr;
+}
+
 #na {
     grid-area: 'na';
-    background-color: rgb(201, 174, 201);
+    background-color: rgb(136, 184, 215);
     height: 75px;
     text-align: center;
 }
+
 
 #lg {
     grid-area: 'lg';
-    background-color: rgb(42, 32, 42);
+    background-color: rgb(136, 184, 215);
     height: 75px;
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+}
