@@ -58,7 +58,7 @@ class App < Sinatra::Base
         erb :'show_artists'
     end
 
-    
+    get '/login'
 
     
 end
