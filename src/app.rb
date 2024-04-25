@@ -1,3 +1,5 @@
+
+
 class App < Sinatra::Base
 
     helpers do
@@ -32,8 +34,9 @@ class App < Sinatra::Base
       p params
       name = params['name']
       desc = params['about']
-      query = 'INSERT INTO artists (name, about) VALUES (?,?) RETURNING *'
-      result = db.execute(query, name, desc).first 
+      score = params['rating']
+      query = 'INSERT INTO artists (name, about, raiting) VALUES (?,?,?) RETURNING *'
+      result = db.execute(query, name, desc, score).first 
       redirect "/artists" 
     end
 
@@ -48,9 +51,9 @@ class App < Sinatra::Base
         redirect "/artists/#{id}" 
     end
 
-    post '/artists/:id/delete' do |id| 
+    post '/artist/delete/:id' do |id| 
         db.execute('DELETE FROM artists WHERE id = ?', id)
-            redirect "/artists/"
+        redirect "/artists"
     end
 
     get '/artists/:id' do |artist_id|
@@ -58,7 +61,11 @@ class App < Sinatra::Base
         erb :'show_artists'
     end
 
-    get '/login'
+    get '/login' do
+        "Hello World"
+        erb :'login'
+
+    end
 
     
 end
