@@ -35,7 +35,7 @@ class App < Sinatra::Base
       name = params['name']
       desc = params['about']
       score = params['rating']
-      query = 'INSERT INTO artists (name, about, raiting) VALUES (?,?,?) RETURNING *'
+      query = 'INSERT INTO artists (name, about, rating) VALUES (?,?,?) RETURNING *'
       result = db.execute(query, name, desc, score).first 
       redirect "/artists" 
     end
@@ -61,11 +61,62 @@ class App < Sinatra::Base
         erb :'show_artists'
     end
 
-    get '/login' do
-        "Hello World"
-        erb :'login'
-
+    get '/user/:id' do |user_id|
+        @user = db.execute('SELECT * FROM users WHERE id = ?', user_id).first
+        erb :'userpage'
     end
 
+    get '/new_account' do
+        erb :'new_account'
+    end
+
+    # 'post '/new_account' do
+    #     username = params['username']
+    #     cleartext_password = params['password']
+    #     hashed_password = BCrypt::Password.create(cleartext_password) 
+    #     user = db.execute('INSERT INTO users (username, password) VALUES (?,?) RETURNING *', username, hashed_password).first['id']
+    #     session[:user_id] = id
+    #     redirect '/new_account'
+    # end'
+
+    post '/new_account' do
+        name = params['user_name']
+        password = params['password']
+        hashed_password = BCrypt::Password.create(password)
+        id = db.execute('INSERT INTO users (name, password) VALUES (?,?) RETURNING *', name, hashed_password).first['id']
+        session[:user_id] = id
+        redirect "/user/#{id}" 
+    end
+
+
+    #Sida 1.1 Skapa konto/logga in 
+    get '/user/:id' do |user_id|  
+        @user = db.execute('SELECT * FROM users WHERE id = ?', user_id).first
+        erb :'userpage'
+    end
+
+    get '/login' do
+        erb :'login'
+    end
+
+    post '/login' do 
+        username = params['username']
+        cleartext_password = params['password'] 
+        password_from_db = BCrypt::Password.new(user['password'])
+        user = db.execute('INSERT INTO users (username, password) VALUES (?,?) RETURNING *', username, hashed_password).first['id']
+        
+        if 
+            user == nil
+            redirect '/new_account'
+        end
+
+        if password_from_db == clertext_password 
+            session[:user_id] = user['id']
+            redirect "/user/#{session[:user_id]}"
+        else
+            p "Failed login"
+            redirect "/index"
+        end
+    end
     
 end
